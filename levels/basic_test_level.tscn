@@ -1,0 +1,136 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://checkers.material" type="Material" id=2]
+[ext_resource path="res://level.gd" type="Script" id=3]
+[ext_resource path="res://enemy.tscn" type="PackedScene" id=4]
+
+[sub_resource type="SpatialMaterial" id=6]
+flags_transparent = true
+albedo_color = Color( 0.619608, 0.94902, 0.607843, 0.537255 )
+
+[sub_resource type="BoxShape" id=10]
+extents = Vector3( 1, 0.5, 1 )
+
+[node name="BasicTestLevel" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="StartArea" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+width = 1.999
+height = 0.999
+depth = 1.999
+material = SubResource( 6 )
+
+[node name="Platform" type="CSGCombiner" parent="."]
+material_override = ExtResource( 2 )
+use_collision = true
+
+[node name="CSGBox" type="CSGBox" parent="Platform"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -1, 0 )
+width = 5.0
+
+[node name="CSGBox6" type="CSGBox" parent="Platform"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 3, 0 )
+width = 5.0
+
+[node name="CSGBox5" type="CSGBox" parent="Platform"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -1, 0 )
+width = 6.0
+
+[node name="CSGBox2" type="CSGBox" parent="Platform"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, -1, 0 )
+width = 6.0
+
+[node name="CSGBox3" type="CSGBox" parent="Platform"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13, -1, 0 )
+width = 6.0
+
+[node name="CSGBox4" type="CSGBox" parent="Platform"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18, -1, 0 )
+width = 6.0
+
+[node name="CSGBox7" type="CSGBox" parent="Platform"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -2, 0 )
+use_collision = true
+width = 5.0
+depth = 6.0
+material = ExtResource( 2 )
+
+[node name="Enemy" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.4, 0 )
+waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
+
+[node name="E1WP1" type="Spatial" parent="Enemy"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
+
+[node name="E1WP2" type="Spatial" parent="Enemy"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0.4, 0 )
+waypoints = [ NodePath("E2WP2"), NodePath("E2WP1") ]
+
+[node name="E2WP1" type="Spatial" parent="Enemy2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
+
+[node name="E2WP2" type="Spatial" parent="Enemy2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 0.4, 0 )
+waypoints = [ NodePath("E3WP2"), NodePath("E3WP1") ]
+
+[node name="E3WP1" type="Spatial" parent="Enemy3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
+
+[node name="E3WP2" type="Spatial" parent="Enemy3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0.4, 0 )
+waypoints = [ NodePath("E4WP1"), NodePath("E4WP2") ]
+
+[node name="E4WP1" type="Spatial" parent="Enemy4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
+
+[node name="E4WP2" type="Spatial" parent="Enemy4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
+
+[node name="Enemy5" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5, 0.4, 0 )
+waypoints = [ NodePath("E5WP1"), NodePath("E5WP2") ]
+
+[node name="E5WP1" type="Spatial" parent="Enemy5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
+
+[node name="E5WP2" type="Spatial" parent="Enemy5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
+
+[node name="Enemy6" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5, 0.4, 0 )
+waypoints = [ NodePath("E6WP2"), NodePath("E6WP1") ]
+
+[node name="E6WP1" type="Spatial" parent="Enemy6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
+
+[node name="E6WP2" type="Spatial" parent="Enemy6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
+
+[node name="EndArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.5, 0 )
+collision_layer = 16
+collision_mask = 16
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Visual" type="CSGBox" parent="EndArea"]
+width = 1.999
+height = 0.999
+depth = 1.999
+material = SubResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="EndArea"]
+shape = SubResource( 10 )
+
+[connection signal="body_entered" from="EndArea" to="." method="_on_EndArea_body_entered"]

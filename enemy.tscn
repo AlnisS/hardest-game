@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://enemy.gd" type="Script" id=1]
+
+[sub_resource type="SphereShape" id=8]
+radius = 0.2
+
+[sub_resource type="SpatialMaterial" id=9]
+params_cull_mode = 1
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0, 0, 1, 1 )
+
+[node name="Enemy" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0 )
+collision_layer = 256
+collision_mask = 256
+script = ExtResource( 1 )
+waypoints = [ NodePath("../E1WP1"), NodePath("../E1WP2") ]
+speed = 6.0
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 8 )
+
+[node name="CSGSphere" type="CSGSphere" parent="."]
+cast_shadow = 0
+radius = 0.2
+radial_segments = 24
+rings = 12
+material = SubResource( 9 )
+
+[node name="CSGSphere2" type="CSGSphere" parent="."]
+radius = 0.18
+radial_segments = 24
+rings = 12
+material = SubResource( 7 )

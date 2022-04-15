@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/snayk_growing_on_me.mp3-4feff122391d512ef45d0e019a7c64b9.mp3str"
+
+[deps]
+
+source_file="res://snayk_growing_on_me.mp3"
+dest_files=[ "res://.import/snayk_growing_on_me.mp3-4feff122391d512ef45d0e019a7c64b9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
