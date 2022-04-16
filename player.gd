@@ -16,10 +16,8 @@ func _physics_process(delta):
 	velocity += gravity * delta
 	var right = Vector3(1, 0, 0).normalized()
 	var forward = Vector3(0, 0, -1).normalized()
-	velocity += right * control_movement.x * 2
-	velocity += forward * control_movement.y * 2
-	velocity.x *= 0.6
-	velocity.z *= 0.6
+	velocity.x = control_movement.x * 3.3
+	velocity.z = -control_movement.y * 3.3
 
 	# this is incredibly ugly but prevents jittering against walls
 	velocity.x = move_and_slide(Vector3(velocity.x, 0, 0), Vector3.UP).x
