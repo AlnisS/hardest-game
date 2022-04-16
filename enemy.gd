@@ -19,7 +19,10 @@ func _physics_process(delta):
 	
 	var displacement = get_global_transform().origin - target
 	
-	translate(-displacement.normalized() * delta * speed)
+	var motion = to_local(-displacement.normalized() * delta * speed)
+	var base = to_local(Vector3.ZERO)
+	
+	translate(motion - base)
 	
 	if displacement.length() < delta * speed * 2:
 		waypoint_index += 1
