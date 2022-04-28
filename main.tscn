@@ -96,16 +96,6 @@ transform = Transform( 1, 0, 0, 0, 0.84051, 0.541796, 0, -0.541796, 0.84051, 0, 
 wait_time = 0.05
 one_shot = true
 
-[node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.875, 0.129409, 0.466506, -0.466506, 0.482963, 0.741025, -0.12941, -0.866025, 0.482963, 0, 0, 0 )
-light_energy = 0.5
-shadow_enabled = true
-shadow_bias = 0.0
-shadow_reverse_cull_face = true
-directional_shadow_mode = 0
-directional_shadow_normal_bias = 0.0
-directional_shadow_depth_range = 1
-
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 volume_db = -8.0
@@ -168,6 +158,13 @@ margin_right = 166.0
 margin_bottom = 39.0
 custom_fonts/font = SubResource( 6 )
 text = "1"
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+light_energy = 0.2
+shadow_enabled = true
+directional_shadow_mode = 0
+directional_shadow_depth_range = 1
 
 [connection signal="player_died" from="Player" to="." method="_on_Player_player_died"]
 [connection signal="body_entered" from="Player/EnemyDetector" to="Player" method="_on_EnemyDetector_body_entered"]
