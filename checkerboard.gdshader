@@ -3,9 +3,9 @@ shader_type spatial;
 //render_mode unshaded, cull_disabled;
 
 void fragment() {
-	vec3 world_coords = (CAMERA_MATRIX * vec4(VERTEX, 1.0)).xyz;
+	vec3 world_coords = (CAMERA_MATRIX * vec4(VERTEX + NORMAL * 0.001, 1.0)).xyz;
 //	world_coords += vec3(0.001, 0.001, 0.001);
-	world_coords += NORMAL * 0.001;
+//	world_coords += NORMAL * 0.001;
 
 	vec3 vis = vec3(248,247,255);
 	vis /= 255.0;
