@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://checkers.material" type="Material" id=2]
 [ext_resource path="res://level.gd" type="Script" id=3]
@@ -14,7 +14,7 @@ extents = Vector3( 3, 1, 1 )
 [sub_resource type="Animation" id=11]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("MovingPlatform1/Enemy1:translation")
+tracks/0/path = NodePath("Enemy1:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -26,7 +26,7 @@ tracks/0/keys = {
 "values": [ Vector3( 3, 1.4, 0.5 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("MovingPlatform1/Enemy2:transform")
+tracks/1/path = NodePath("Enemy2:transform")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -38,7 +38,7 @@ tracks/1/keys = {
 "values": [ Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("MovingPlatform1:translation")
+tracks/2/path = NodePath(".:translation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -94,7 +94,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=14]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("MovingPlatform1/Enemy1:translation")
+tracks/0/path = NodePath("Enemy1:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -106,7 +106,7 @@ tracks/0/keys = {
 "values": [ Vector3( 3, 1.4, 0.5 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("MovingPlatform1/Enemy2:transform")
+tracks/1/path = NodePath("Enemy2:transform")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -118,7 +118,7 @@ tracks/1/keys = {
 "values": [ Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("MovingPlatform1:translation")
+tracks/2/path = NodePath(".:translation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -127,7 +127,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( 13, -2, 0 ) ]
+"values": [ Vector3( 13, -1, -2 ) ]
 }
 
 [sub_resource type="Animation" id=15]
@@ -174,7 +174,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=16]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("MovingPlatform1/Enemy1:translation")
+tracks/0/path = NodePath("Enemy1:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -186,7 +186,7 @@ tracks/0/keys = {
 "values": [ Vector3( 3, 1.4, 0.5 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("MovingPlatform1/Enemy2:transform")
+tracks/1/path = NodePath("Enemy2:transform")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -198,7 +198,7 @@ tracks/1/keys = {
 "values": [ Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("MovingPlatform1:translation")
+tracks/2/path = NodePath(".:translation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -207,7 +207,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( 18, -2, 0 ) ]
+"values": [ Vector3( 18, -2, 2 ) ]
 }
 
 [sub_resource type="Animation" id=17]
@@ -256,7 +256,10 @@ extents = Vector3( 1, 0.5, 1 )
 
 [sub_resource type="SpatialMaterial" id=18]
 flags_use_shadow_to_opacity = true
-flags_vertex_lighting = true
+albedo_color = Color( 0.666667, 0.647059, 1, 1 )
+
+[sub_resource type="SpatialMaterial" id=19]
+flags_unshaded = true
 albedo_color = Color( 0.666667, 0.647059, 1, 1 )
 
 [node name="BasicTestLevel" type="Spatial"]
@@ -296,7 +299,7 @@ shape = SubResource( 13 )
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 1.4, 0.5 )
 
 [node name="Enemy2" parent="MovingPlatform1" instance=ExtResource( 4 )]
-transform = Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, -3, 1.4, -0.5 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MovingPlatform1" groups=["music_sync_animation"]]
 autoplay = "oscillate"
@@ -316,10 +319,10 @@ material = ExtResource( 2 )
 shape = SubResource( 13 )
 
 [node name="Enemy1" parent="MovingPlatform2" instance=ExtResource( 4 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, 0.5 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 1.4, 0.5 )
 
 [node name="Enemy2" parent="MovingPlatform2" instance=ExtResource( 4 )]
-transform = Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 3, 1.4, -0.5 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MovingPlatform2" groups=["music_sync_animation"]]
 autoplay = "oscillate"
@@ -342,7 +345,7 @@ shape = SubResource( 13 )
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 1.4, 0.5 )
 
 [node name="Enemy2" parent="MovingPlatform3" instance=ExtResource( 4 )]
-transform = Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, -3, 1.4, -0.5 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MovingPlatform3" groups=["music_sync_animation"]]
 autoplay = "oscillate"
@@ -370,7 +373,12 @@ shape = SubResource( 10 )
 [node name="CSGBox" type="CSGBox" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -5, 0 )
 width = 40.0
-depth = 15.8681
+depth = 16.0
 material = SubResource( 18 )
+
+[node name="ShadowFixerCube" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -10 )
+width = 40.0
+material = SubResource( 19 )
 
 [connection signal="body_entered" from="EndArea" to="." method="_on_EndArea_body_entered"]
