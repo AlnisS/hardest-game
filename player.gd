@@ -18,15 +18,8 @@ func _physics_process(delta):
 	var forward = Vector3(0, 0, -1).normalized()
 	velocity.x = control_movement.x * 3.3
 	velocity.z = -control_movement.y * 3.3
-
-	# this is incredibly ugly but prevents jittering against walls
-	velocity.x = move_and_slide(Vector3(velocity.x, 0, 0), Vector3.UP).x
-	if is_on_floor():
-		$CoyoteTime.start()
-	velocity.y = move_and_slide(Vector3(0, velocity.y, 0), Vector3.UP).y
-	if is_on_floor():
-		$CoyoteTime.start()
-	velocity.z = move_and_slide(Vector3(0, 0, velocity.z), Vector3.UP).z
+	
+	velocity = move_and_slide(velocity, Vector3.UP)
 	if is_on_floor():
 		$CoyoteTime.start()
 	

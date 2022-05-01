@@ -2,7 +2,7 @@ shader_type spatial;
 
 void fragment() {
 	// coordinates of point just in front of face, put "inside" a grid cube to prevent flickering
-	vec3 world_coords = (CAMERA_MATRIX * vec4(VERTEX + NORMAL * 0.1, 1.0)).xyz;
+	vec3 world_coords = (inverse(WORLD_MATRIX) * (CAMERA_MATRIX * vec4(VERTEX + NORMAL * 0.1, 1.0))).xyz;
 	
 	// alternating odd/even pattern along each axis
 	float chessboard = floor(world_coords.x) + floor(world_coords.y) + floor(world_coords.z);
