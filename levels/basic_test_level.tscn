@@ -8,6 +8,9 @@
 flags_transparent = true
 albedo_color = Color( 0.619608, 0.94902, 0.607843, 0.537255 )
 
+[sub_resource type="BoxShape" id=10]
+extents = Vector3( 1, 0.5, 1 )
+
 [sub_resource type="Animation" id=11]
 length = 0.001
 tracks/0/type = "value"
@@ -63,9 +66,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector3( 8.5, 0.4, -3 ), Vector3( 8.5, 0.4, 3 ), Vector3( 8.5, 0.4, -3 ) ]
 }
-
-[sub_resource type="BoxShape" id=10]
-extents = Vector3( 1, 0.5, 1 )
 
 [node name="BasicTestLevel" type="Spatial"]
 script = ExtResource( 3 )
@@ -136,11 +136,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0 )
 [node name="Enemy3" parent="Oscillator2" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "oscillate"
-anims/RESET = SubResource( 11 )
-anims/oscillate = SubResource( 12 )
-
 [node name="EndArea" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.5, 0 )
 collision_layer = 16
@@ -157,5 +152,11 @@ material = SubResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="EndArea"]
 shape = SubResource( 10 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." groups=["music_sync_animation"]]
+autoplay = "oscillate"
+playback_process_mode = 0
+anims/RESET = SubResource( 11 )
+anims/oscillate = SubResource( 12 )
 
 [connection signal="body_entered" from="EndArea" to="." method="_on_EndArea_body_entered"]

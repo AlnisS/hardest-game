@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://checkers.material" type="Material" id=2]
 [ext_resource path="res://level.gd" type="Script" id=3]
@@ -64,6 +64,59 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id=12]
 resource_name = "oscillate"
+length = 8.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Oscillator2:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 4, 6, 8, 10, 12, 14, 16 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 5, 0, 5 ), Vector3( 5, 0, -5 ), Vector3( 5, 0, 5 ), Vector3( 5, 0, -5 ), Vector3( 5, 0, 5 ), Vector3( 5, 0, -5 ), Vector3( 5, 0, 5 ), Vector3( 5, 0, -5 ), Vector3( 5, 0, 5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Oscillator1:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2, 4, 6, 8, 10, 12, 14, 16 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 4, 0, -5 ), Vector3( 4, 0, 5 ), Vector3( 4, 0, -5 ), Vector3( 4, 0, 5 ), Vector3( 4, 0, -5 ), Vector3( 4, 0, 5 ), Vector3( 4, 0, -5 ), Vector3( 4, 0, 5 ), Vector3( 4, 0, -5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LowerSweeper:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4, 8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 4, 0, 0 ), Vector3( 12, 0, 0 ), Vector3( 4, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("UpperSweeper:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 4, 8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 12, 1, 0 ), Vector3( 4, 1, 0 ), Vector3( 12, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "oscillate (copy)"
 length = 9.0
 loop = true
 tracks/0/type = "value"
@@ -309,9 +362,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -4.5 )
 [node name="Enemy13" parent="UpperSweeper" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -5.5 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." groups=["music_sync_animation"]]
 autoplay = "oscillate"
+playback_process_mode = 0
 anims/RESET = SubResource( 11 )
 anims/oscillate = SubResource( 12 )
+"anims/oscillate (copy)" = SubResource( 13 )
 
 [connection signal="body_entered" from="EndArea" to="." method="_on_EndArea_body_entered"]
