@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://checkers.material" type="Material" id=2]
 [ext_resource path="res://level.gd" type="Script" id=3]
@@ -10,6 +10,110 @@ albedo_color = Color( 0.619608, 0.94902, 0.607843, 0.537255 )
 
 [sub_resource type="BoxShape" id=10]
 extents = Vector3( 1, 0.5, 1 )
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Oscillator2:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 5, 0, 5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Oscillator1:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 4, 0, -5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LowerSweeper:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 4, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("UpperSweeper:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 12, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "oscillate"
+length = 9.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Oscillator2:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3, 4.5, 6, 7.5, 9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 5, 0, 5 ), Vector3( 5, 0, -5 ), Vector3( 5, 0, 5 ), Vector3( 5, 0, -5 ), Vector3( 5, 0, 5 ), Vector3( 5, 0, -5 ), Vector3( 5, 0, 5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Oscillator1:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5, 3, 4.5, 6, 7.5, 9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 4, 0, -5 ), Vector3( 4, 0, 5 ), Vector3( 4, 0, -5 ), Vector3( 4, 0, 5 ), Vector3( 4, 0, -5 ), Vector3( 4, 0, 5 ), Vector3( 4, 0, -5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LowerSweeper:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4.5, 9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 4, 0, 0 ), Vector3( 12, 0, 0 ), Vector3( 4, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("UpperSweeper:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 4.5, 9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 12, 1, 0 ), Vector3( 4, 1, 0 ), Vector3( 12, 1, 0 ) ]
+}
 
 [node name="HarderTestLevel" type="Spatial"]
 script = ExtResource( 3 )
@@ -55,495 +159,159 @@ material = SubResource( 6 )
 [node name="CollisionShape" type="CollisionShape" parent="EndArea"]
 shape = SubResource( 10 )
 
-[node name="Lower" type="Spatial" parent="."]
+[node name="Oscillator1" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -5 )
 
-[node name="Enemy" parent="Lower" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.4, 0 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 7.0
+[node name="Enemy" parent="Oscillator1" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.4, 0 )
 
-[node name="E1WP1" type="Spatial" parent="Lower/Enemy"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
+[node name="Enemy2" parent="Oscillator1" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.4, 0 )
 
-[node name="E1WP2" type="Spatial" parent="Lower/Enemy"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
-
-[node name="Enemy9" parent="Lower" instance=ExtResource( 4 )]
+[node name="Enemy3" parent="Oscillator1" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.4, 0 )
-waypoints = [ NodePath("E1WP2"), NodePath("E1WP1") ]
-speed = 7.0
 
-[node name="E1WP1" type="Spatial" parent="Lower/Enemy9"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
-
-[node name="E1WP2" type="Spatial" parent="Lower/Enemy9"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
-
-[node name="Enemy2" parent="Lower" instance=ExtResource( 4 )]
+[node name="Enemy4" parent="Oscillator1" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0.4, 0 )
-waypoints = [ NodePath("E2WP2"), NodePath("E2WP1") ]
-speed = 7.0
 
-[node name="E2WP1" type="Spatial" parent="Lower/Enemy2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
-
-[node name="E2WP2" type="Spatial" parent="Lower/Enemy2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
-
-[node name="Enemy3" parent="Lower" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0.4, 0 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 7.0
-
-[node name="E1WP1" type="Spatial" parent="Lower/Enemy3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
-
-[node name="E1WP2" type="Spatial" parent="Lower/Enemy3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
-
-[node name="Enemy4" parent="Lower" instance=ExtResource( 4 )]
+[node name="Enemy5" parent="Oscillator1" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.4, 0 )
-waypoints = [ NodePath("E2WP2"), NodePath("E2WP1") ]
-speed = 7.0
 
-[node name="E2WP1" type="Spatial" parent="Lower/Enemy4"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
+[node name="Enemy6" parent="Oscillator1" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.4, 0 )
 
-[node name="E2WP2" type="Spatial" parent="Lower/Enemy4"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
+[node name="Enemy7" parent="Oscillator1" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.4, 0 )
 
-[node name="Enemy5" parent="Lower" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0.4, 0 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 7.0
-
-[node name="E1WP1" type="Spatial" parent="Lower/Enemy5"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
-
-[node name="E1WP2" type="Spatial" parent="Lower/Enemy5"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
-
-[node name="Enemy6" parent="Lower" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0.4, 0 )
-waypoints = [ NodePath("E2WP2"), NodePath("E2WP1") ]
-speed = 7.0
-
-[node name="E2WP1" type="Spatial" parent="Lower/Enemy6"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
-
-[node name="E2WP2" type="Spatial" parent="Lower/Enemy6"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
-
-[node name="Enemy7" parent="Lower" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0.4, 0 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 7.0
-
-[node name="E1WP1" type="Spatial" parent="Lower/Enemy7"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
-
-[node name="E1WP2" type="Spatial" parent="Lower/Enemy7"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
-
-[node name="Enemy10" parent="Lower" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 0.4, 0 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 7.0
-
-[node name="E1WP1" type="Spatial" parent="Lower/Enemy10"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
-
-[node name="E1WP2" type="Spatial" parent="Lower/Enemy10"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
-
-[node name="Enemy8" parent="Lower" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0.4, 0 )
-waypoints = [ NodePath("E2WP2"), NodePath("E2WP1") ]
-speed = 7.0
-
-[node name="E2WP1" type="Spatial" parent="Lower/Enemy8"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
-
-[node name="E2WP2" type="Spatial" parent="Lower/Enemy8"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
-
-[node name="Lower2" type="Spatial" parent="."]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8, 0, 8 )
-
-[node name="Enemy" parent="Lower2" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.4, 4.76837e-07 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 2.0
-
-[node name="E1WP1" type="Spatial" parent="Lower2/Enemy"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 0, -4 )
-
-[node name="E1WP2" type="Spatial" parent="Lower2/Enemy"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
-
-[node name="Enemy21" parent="Lower2" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.4, 0 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 2.0
-
-[node name="E1WP1" type="Spatial" parent="Lower2/Enemy21"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 0, -4 )
-
-[node name="E1WP2" type="Spatial" parent="Lower2/Enemy21"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
-
-[node name="Enemy2" parent="Lower2" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.4, 4.76837e-07 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 2.0
-
-[node name="E1WP1" type="Spatial" parent="Lower2/Enemy2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 0, -4 )
-
-[node name="E1WP2" type="Spatial" parent="Lower2/Enemy2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
-
-[node name="Enemy3" parent="Lower2" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0.4, 4.76837e-07 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 2.0
-
-[node name="E1WP1" type="Spatial" parent="Lower2/Enemy3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 0, -4 )
-
-[node name="E1WP2" type="Spatial" parent="Lower2/Enemy3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
-
-[node name="Enemy4" parent="Lower2" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0.4, 4.76837e-07 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 2.0
-
-[node name="E1WP1" type="Spatial" parent="Lower2/Enemy4"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 0, -4 )
-
-[node name="E1WP2" type="Spatial" parent="Lower2/Enemy4"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
-
-[node name="Enemy5" parent="Lower2" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.4, 4.76837e-07 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 2.0
-
-[node name="E1WP1" type="Spatial" parent="Lower2/Enemy5"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 0, -4 )
-
-[node name="E1WP2" type="Spatial" parent="Lower2/Enemy5"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
-
-[node name="Enemy6" parent="Lower2" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0.4, 4.76837e-07 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 2.0
-
-[node name="E1WP1" type="Spatial" parent="Lower2/Enemy6"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 0, -4 )
-
-[node name="E1WP2" type="Spatial" parent="Lower2/Enemy6"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
-
-[node name="Enemy7" parent="Lower2" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0.4, 4.76837e-07 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 2.0
-
-[node name="E1WP1" type="Spatial" parent="Lower2/Enemy7"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 0, -4 )
-
-[node name="E1WP2" type="Spatial" parent="Lower2/Enemy7"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
-
-[node name="Enemy8" parent="Lower2" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0.4, 4.76837e-07 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 2.0
-
-[node name="E1WP1" type="Spatial" parent="Lower2/Enemy8"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 0, -4 )
-
-[node name="E1WP2" type="Spatial" parent="Lower2/Enemy8"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
-
-[node name="Enemy9" parent="Lower2" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0.4, 4.76837e-07 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 2.0
-
-[node name="E1WP1" type="Spatial" parent="Lower2/Enemy9"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 0, -4 )
-
-[node name="E1WP2" type="Spatial" parent="Lower2/Enemy9"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
-
-[node name="Enemy10" parent="Lower2" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 0.4, 4.76837e-07 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 2.0
-
-[node name="E1WP1" type="Spatial" parent="Lower2/Enemy10"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 0, -4 )
-
-[node name="E1WP2" type="Spatial" parent="Lower2/Enemy10"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
-
-[node name="Enemy23" parent="Lower2" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0.4, 4.76837e-07 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 2.0
-
-[node name="E1WP1" type="Spatial" parent="Lower2/Enemy23"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 0, -4 )
-
-[node name="E1WP2" type="Spatial" parent="Lower2/Enemy23"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
-
-[node name="Enemy11" parent="Lower2" instance=ExtResource( 4 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 12.5, 1.4, 4.76837e-07 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 2.0
-
-[node name="E1WP1" type="Spatial" parent="Lower2/Enemy11"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 0, -4 )
-
-[node name="E1WP2" type="Spatial" parent="Lower2/Enemy11"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
-
-[node name="Enemy22" parent="Lower2" instance=ExtResource( 4 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.5, 1.4, 4.76837e-07 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 2.0
-
-[node name="E1WP1" type="Spatial" parent="Lower2/Enemy22"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 0, -4 )
-
-[node name="E1WP2" type="Spatial" parent="Lower2/Enemy22"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
-
-[node name="Enemy12" parent="Lower2" instance=ExtResource( 4 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 11.5, 1.4, 4.76837e-07 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 2.0
-
-[node name="E1WP1" type="Spatial" parent="Lower2/Enemy12"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 0, -4 )
-
-[node name="E1WP2" type="Spatial" parent="Lower2/Enemy12"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
-
-[node name="Enemy13" parent="Lower2" instance=ExtResource( 4 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10.5, 1.4, 4.76837e-07 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 2.0
-
-[node name="E1WP1" type="Spatial" parent="Lower2/Enemy13"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 0, -4 )
-
-[node name="E1WP2" type="Spatial" parent="Lower2/Enemy13"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
-
-[node name="Enemy14" parent="Lower2" instance=ExtResource( 4 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9.5, 1.4, 4.76837e-07 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 2.0
-
-[node name="E1WP1" type="Spatial" parent="Lower2/Enemy14"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 0, -4 )
-
-[node name="E1WP2" type="Spatial" parent="Lower2/Enemy14"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
-
-[node name="Enemy15" parent="Lower2" instance=ExtResource( 4 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.5, 1.4, 4.76837e-07 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 2.0
-
-[node name="E1WP1" type="Spatial" parent="Lower2/Enemy15"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 0, -4 )
-
-[node name="E1WP2" type="Spatial" parent="Lower2/Enemy15"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
-
-[node name="Enemy16" parent="Lower2" instance=ExtResource( 4 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5, 1.4, 4.76837e-07 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 2.0
-
-[node name="E1WP1" type="Spatial" parent="Lower2/Enemy16"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 0, -4 )
-
-[node name="E1WP2" type="Spatial" parent="Lower2/Enemy16"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
-
-[node name="Enemy17" parent="Lower2" instance=ExtResource( 4 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.5, 1.4, 4.76837e-07 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 2.0
-
-[node name="E1WP1" type="Spatial" parent="Lower2/Enemy17"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 0, -4 )
-
-[node name="E1WP2" type="Spatial" parent="Lower2/Enemy17"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
-
-[node name="Enemy18" parent="Lower2" instance=ExtResource( 4 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.5, 1.4, 4.76837e-07 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 2.0
-
-[node name="E1WP1" type="Spatial" parent="Lower2/Enemy18"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 0, -4 )
-
-[node name="E1WP2" type="Spatial" parent="Lower2/Enemy18"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
-
-[node name="Enemy19" parent="Lower2" instance=ExtResource( 4 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.5, 1.4, 4.76837e-07 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 2.0
-
-[node name="E1WP1" type="Spatial" parent="Lower2/Enemy19"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 0, -4 )
-
-[node name="E1WP2" type="Spatial" parent="Lower2/Enemy19"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
-
-[node name="Enemy20" parent="Lower2" instance=ExtResource( 4 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.5, 1.4, 4.76837e-07 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 2.0
-
-[node name="E1WP1" type="Spatial" parent="Lower2/Enemy20"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 0, -4 )
-
-[node name="E1WP2" type="Spatial" parent="Lower2/Enemy20"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
-
-[node name="Enemy24" parent="Lower2" instance=ExtResource( 4 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.5, 1.4, 0 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 2.0
-
-[node name="E1WP1" type="Spatial" parent="Lower2/Enemy24"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 0, -4 )
-
-[node name="E1WP2" type="Spatial" parent="Lower2/Enemy24"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
-
-[node name="Upper" type="Spatial" parent="."]
-
-[node name="Enemy9" parent="Upper" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1.4, 0 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 7.0
-
-[node name="E1WP1" type="Spatial" parent="Upper/Enemy9"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
-
-[node name="E1WP2" type="Spatial" parent="Upper/Enemy9"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
-
-[node name="Enemy17" parent="Upper" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.4, 0 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 7.0
-
-[node name="E1WP1" type="Spatial" parent="Upper/Enemy17"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
-
-[node name="E1WP2" type="Spatial" parent="Upper/Enemy17"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
-
-[node name="Enemy10" parent="Upper" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 1.4, 0 )
-waypoints = [ NodePath("E2WP2"), NodePath("E2WP1") ]
-speed = 7.0
-
-[node name="E2WP1" type="Spatial" parent="Upper/Enemy10"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
-
-[node name="E2WP2" type="Spatial" parent="Upper/Enemy10"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
-
-[node name="Enemy11" parent="Upper" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1.4, 0 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 7.0
-
-[node name="E1WP1" type="Spatial" parent="Upper/Enemy11"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
-
-[node name="E1WP2" type="Spatial" parent="Upper/Enemy11"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
-
-[node name="Enemy12" parent="Upper" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 1.4, 0 )
-waypoints = [ NodePath("E2WP2"), NodePath("E2WP1") ]
-speed = 7.0
-
-[node name="E2WP1" type="Spatial" parent="Upper/Enemy12"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
-
-[node name="E2WP2" type="Spatial" parent="Upper/Enemy12"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
-
-[node name="Enemy13" parent="Upper" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 1.4, 0 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 7.0
-
-[node name="E1WP1" type="Spatial" parent="Upper/Enemy13"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
-
-[node name="E1WP2" type="Spatial" parent="Upper/Enemy13"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
-
-[node name="Enemy14" parent="Upper" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 1.4, 0 )
-waypoints = [ NodePath("E2WP2"), NodePath("E2WP1") ]
-speed = 7.0
-
-[node name="E2WP1" type="Spatial" parent="Upper/Enemy14"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
-
-[node name="E2WP2" type="Spatial" parent="Upper/Enemy14"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
-
-[node name="Enemy18" parent="Upper" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 1.4, 0 )
-waypoints = [ NodePath("E2WP2"), NodePath("E2WP1") ]
-speed = 7.0
-
-[node name="E2WP1" type="Spatial" parent="Upper/Enemy18"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
-
-[node name="E2WP2" type="Spatial" parent="Upper/Enemy18"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
-
-[node name="Enemy15" parent="Upper" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 1.4, 0 )
-waypoints = [ NodePath("E1WP1"), NodePath("E1WP2") ]
-speed = 7.0
-
-[node name="E1WP1" type="Spatial" parent="Upper/Enemy15"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
-
-[node name="E1WP2" type="Spatial" parent="Upper/Enemy15"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
-
-[node name="Enemy16" parent="Upper" instance=ExtResource( 4 )]
+[node name="Enemy8" parent="Oscillator1" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1.4, 0 )
-waypoints = [ NodePath("E2WP2"), NodePath("E2WP1") ]
-speed = 7.0
 
-[node name="E2WP1" type="Spatial" parent="Upper/Enemy16"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
+[node name="Enemy9" parent="Oscillator1" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 1.4, 0 )
 
-[node name="E2WP2" type="Spatial" parent="Upper/Enemy16"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
+[node name="Enemy10" parent="Oscillator1" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 1.4, 0 )
+
+[node name="Oscillator2" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5 )
+
+[node name="Enemy" parent="Oscillator2" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.4, 0 )
+
+[node name="Enemy2" parent="Oscillator2" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.4, 0 )
+
+[node name="Enemy3" parent="Oscillator2" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.4, 0 )
+
+[node name="Enemy4" parent="Oscillator2" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0.4, 0 )
+
+[node name="Enemy5" parent="Oscillator2" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.4, 0 )
+
+[node name="Enemy6" parent="Oscillator2" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.4, 0 )
+
+[node name="Enemy7" parent="Oscillator2" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.4, 0 )
+
+[node name="Enemy8" parent="Oscillator2" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.4, 0 )
+
+[node name="Enemy9" parent="Oscillator2" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1.4, 0 )
+
+[node name="Enemy10" parent="Oscillator2" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 1.4, 0 )
+
+[node name="LowerSweeper" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0 )
+
+[node name="Enemy" parent="LowerSweeper" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 5.5 )
+
+[node name="Enemy2" parent="LowerSweeper" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 4.5 )
+
+[node name="Enemy3" parent="LowerSweeper" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 3.5 )
+
+[node name="Enemy4" parent="LowerSweeper" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 2.5 )
+
+[node name="Enemy5" parent="LowerSweeper" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 1.5 )
+
+[node name="Enemy6" parent="LowerSweeper" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5 )
+
+[node name="Enemy7" parent="LowerSweeper" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -0.5 )
+
+[node name="Enemy8" parent="LowerSweeper" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -1.5 )
+
+[node name="Enemy9" parent="LowerSweeper" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -2.5 )
+
+[node name="Enemy10" parent="LowerSweeper" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -3.5 )
+
+[node name="Enemy11" parent="LowerSweeper" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -4.5 )
+
+[node name="Enemy12" parent="LowerSweeper" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -4.5 )
+
+[node name="Enemy13" parent="LowerSweeper" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -5.5 )
+
+[node name="UpperSweeper" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, 0 )
+
+[node name="Enemy" parent="UpperSweeper" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 5.5 )
+
+[node name="Enemy2" parent="UpperSweeper" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 4.5 )
+
+[node name="Enemy3" parent="UpperSweeper" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 3.5 )
+
+[node name="Enemy4" parent="UpperSweeper" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 2.5 )
+
+[node name="Enemy5" parent="UpperSweeper" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 1.5 )
+
+[node name="Enemy6" parent="UpperSweeper" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5 )
+
+[node name="Enemy7" parent="UpperSweeper" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -0.5 )
+
+[node name="Enemy8" parent="UpperSweeper" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -1.5 )
+
+[node name="Enemy9" parent="UpperSweeper" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -2.5 )
+
+[node name="Enemy10" parent="UpperSweeper" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -3.5 )
+
+[node name="Enemy11" parent="UpperSweeper" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -4.5 )
+
+[node name="Enemy12" parent="UpperSweeper" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -4.5 )
+
+[node name="Enemy13" parent="UpperSweeper" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -5.5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "oscillate"
+anims/RESET = SubResource( 11 )
+anims/oscillate = SubResource( 12 )
 
 [connection signal="body_entered" from="EndArea" to="." method="_on_EndArea_body_entered"]
