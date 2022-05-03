@@ -19,7 +19,16 @@ func _physics_process(delta):
 	velocity.x = control_movement.x * 3.3
 	velocity.z = -control_movement.y * 3.3
 	
-	velocity = move_and_slide(velocity, Vector3.UP)
+	# if just leaving the ground, force the initial jump velocity to be
+	# executed without respect for collisions to prevent moving platforms from
+	# causing short/tall jumps irregularly
+	if $CoyoteTime.time_left > 0 and jumping:
+		var temp_velocity = move_and_slide(Vector3(velocity.x, 0, velocity.z), Vector3.UP)
+		translate(delta * velocity.y * Vector3.UP)
+		velocity = Vector3(temp_velocity.x, velocity.y, temp_velocity.z)
+	else:
+		velocity = move_and_slide(velocity, Vector3.UP)
+	
 	if is_on_floor():
 		$CoyoteTime.start()
 	
