@@ -10,6 +10,7 @@ func _ready():
 	switch_to_level(level_index)
 
 func _physics_process(delta):
+#	print(get_music_playhead())
 	$Player/CameraBase.rotation_degrees.y = -$Player.velocity.x * 2
 	$Player/CameraBase.rotation_degrees.x = -$Player.velocity.z * 2
 	
@@ -37,11 +38,8 @@ func switch_to_level(index):
 	yield(get_tree(), "idle_frame")
 	yield(get_tree(), "idle_frame")
 
-	var music_playhead = fmod(get_music_playhead(), 1.0)
 	for animation_player in get_tree().get_nodes_in_group("music_sync_animation"):
-		var animation_playhead = fmod(animation_player.current_animation_position, 1.0)
-		animation_player.advance(music_playhead - animation_playhead)
-
+		animation_player.seek(fmod(get_music_playhead(), animation_player.current_animation_length))
 
 # music playhead position as a fraction of a beat
 func get_music_playhead():
