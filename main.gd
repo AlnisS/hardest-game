@@ -10,7 +10,6 @@ func _ready():
 	switch_to_level(level_index)
 
 func _physics_process(delta):
-#	print(get_music_playhead())
 	$Player/CameraBase.rotation_degrees.y = -$Player.velocity.x * 2
 	$Player/CameraBase.rotation_degrees.x = -$Player.velocity.z * 2
 	
@@ -28,15 +27,18 @@ func switch_to_level(index):
 	for child in $Level.get_children():
 		child.queue_free()
 	$Level.add_child(new_level)
-	new_level.connect("level_finished", self, "_on_level_finished")
 	$LevelNumber.text = str(level_index + 1)
 	reset_player()
+	
+	# wait two frames to let the new level load and the old one unload so that we
+	# don't have any duplicates, hitches, delays, etc.
+	yield(get_tree(), "idle_frame")
+	yield(get_tree(), "idle_frame")
+	
 	get_tree().set_group("music_sync_animation", "playback_speed", 1.166667)
 	
-	# animations seem to not immediately start on scene switch
-	# waiting 2 frames seems to be enough to sync on all platforms
-	yield(get_tree(), "idle_frame")
-	yield(get_tree(), "idle_frame")
+	for end_area in get_tree().get_nodes_in_group("end_areas"):
+		end_area.connect("body_entered", self, "_on_end_area_body_entered")
 
 	for animation_player in get_tree().get_nodes_in_group("music_sync_animation"):
 		animation_player.seek(fmod(get_music_playhead(), animation_player.current_animation_length))
@@ -57,6 +59,9 @@ func _on_Player_player_died():
 	$Slap.play()
 	$FailsCount.text = str(deaths)
 	reset_player()
+
+func _on_end_area_body_entered(body):
+	_on_level_finished()
 
 func _on_level_finished():
 	level_index += 1

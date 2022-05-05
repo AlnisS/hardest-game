@@ -1,7 +1,6 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://checkers.material" type="Material" id=2]
-[ext_resource path="res://level.gd" type="Script" id=3]
 [ext_resource path="res://enemy.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpatialMaterial" id=6]
@@ -263,7 +262,6 @@ flags_unshaded = true
 albedo_color = Color( 0.666667, 0.647059, 1, 1 )
 
 [node name="BasicTestLevel" type="Spatial"]
-script = ExtResource( 3 )
 
 [node name="StartArea" type="CSGBox" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
@@ -353,7 +351,7 @@ playback_process_mode = 0
 anims/RESET = SubResource( 16 )
 anims/oscillate = SubResource( 17 )
 
-[node name="EndArea" type="Area" parent="."]
+[node name="EndArea" type="Area" parent="." groups=["end_areas"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.5, 0 )
 collision_layer = 16
 collision_mask = 16
@@ -380,5 +378,3 @@ material = SubResource( 18 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -10 )
 width = 40.0
 material = SubResource( 19 )
-
-[connection signal="body_entered" from="EndArea" to="." method="_on_EndArea_body_entered"]

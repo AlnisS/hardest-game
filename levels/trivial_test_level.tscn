@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://checkers.material" type="Material" id=2]
-[ext_resource path="res://level.gd" type="Script" id=3]
 
 [sub_resource type="SpatialMaterial" id=6]
 flags_transparent = true
@@ -11,7 +10,6 @@ albedo_color = Color( 0.619608, 0.94902, 0.607843, 0.537255 )
 extents = Vector3( 1, 0.5, 1 )
 
 [node name="TrivialTestLevel" type="Spatial"]
-script = ExtResource( 3 )
 
 [node name="StartArea" type="CSGBox" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
@@ -28,7 +26,7 @@ use_collision = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -1, 0 )
 width = 8.0
 
-[node name="EndArea" type="Area" parent="."]
+[node name="EndArea" type="Area" parent="." groups=["end_areas"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, 0 )
 collision_layer = 16
 collision_mask = 16
@@ -44,5 +42,3 @@ material = SubResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="EndArea"]
 shape = SubResource( 10 )
-
-[connection signal="body_entered" from="EndArea" to="." method="_on_EndArea_body_entered"]
