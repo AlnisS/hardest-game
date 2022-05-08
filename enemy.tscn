@@ -1,11 +1,23 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [sub_resource type="SphereShape" id=8]
 radius = 0.2
 
+[sub_resource type="SphereMesh" id=10]
+radius = 0.2
+height = 0.4
+radial_segments = 24
+rings = 12
+
 [sub_resource type="SpatialMaterial" id=9]
 params_cull_mode = 1
 albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="SphereMesh" id=11]
+radius = 0.18
+height = 0.36
+radial_segments = 24
+rings = 12
 
 [sub_resource type="SpatialMaterial" id=7]
 albedo_color = Color( 0, 0, 1, 1 )
@@ -18,15 +30,10 @@ collision_mask = 256
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 8 )
 
-[node name="CSGSphere" type="CSGSphere" parent="."]
-cast_shadow = 0
-radius = 0.2
-radial_segments = 24
-rings = 12
-material = SubResource( 9 )
+[node name="Outline" type="MeshInstance" parent="."]
+mesh = SubResource( 10 )
+material/0 = SubResource( 9 )
 
-[node name="CSGSphere2" type="CSGSphere" parent="."]
-radius = 0.18
-radial_segments = 24
-rings = 12
-material = SubResource( 7 )
+[node name="Body" type="MeshInstance" parent="."]
+mesh = SubResource( 11 )
+material/0 = SubResource( 7 )
