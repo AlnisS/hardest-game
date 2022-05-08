@@ -92,5 +92,7 @@ common/enable_pause_aware_picking=true
 
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
-quality/directional_shadow/size=8192
+quality/shadows/filter_mode=0
+quality/shading/force_lambert_over_burley=true
+quality/shading/force_blinn_over_ggx=true
 environment/default_environment="res://default_env.tres"

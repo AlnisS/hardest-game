@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://levels/basic_test_level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main.gd" type="Script" id=2]
@@ -24,6 +24,17 @@ albedo_color = Color( 1, 0, 0, 1 )
 [sub_resource type="DynamicFont" id=6]
 size = 30
 font_data = ExtResource( 7 )
+
+[sub_resource type="SpatialMaterial" id=18]
+flags_use_shadow_to_opacity = true
+albedo_color = Color( 0.666667, 0.647059, 1, 1 )
+
+[sub_resource type="PlaneMesh" id=7]
+material = SubResource( 18 )
+
+[sub_resource type="SpatialMaterial" id=19]
+flags_unshaded = true
+albedo_color = Color( 0.666667, 0.647059, 1, 1 )
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 2 )
@@ -166,6 +177,15 @@ light_energy = 0.2
 shadow_enabled = true
 directional_shadow_mode = 0
 directional_shadow_depth_range = 1
+
+[node name="ShadowCatcher" type="CSGMesh" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0 )
+mesh = SubResource( 7 )
+
+[node name="ShadowFixerCube" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
+width = 4.0
+material = SubResource( 19 )
 
 [connection signal="player_died" from="Player" to="." method="_on_Player_player_died"]
 [connection signal="body_entered" from="Player/EnemyDetector" to="Player" method="_on_EnemyDetector_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://checkers.material" type="Material" id=2]
 [ext_resource path="res://enemy.tscn" type="PackedScene" id=4]
@@ -253,14 +253,6 @@ tracks/2/keys = {
 [sub_resource type="BoxShape" id=10]
 extents = Vector3( 1, 0.5, 1 )
 
-[sub_resource type="SpatialMaterial" id=18]
-flags_use_shadow_to_opacity = true
-albedo_color = Color( 0.666667, 0.647059, 1, 1 )
-
-[sub_resource type="SpatialMaterial" id=19]
-flags_unshaded = true
-albedo_color = Color( 0.666667, 0.647059, 1, 1 )
-
 [node name="BasicTestLevel" type="Spatial"]
 
 [node name="StartArea" type="CSGBox" parent="."]
@@ -367,14 +359,3 @@ material = SubResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="EndArea"]
 shape = SubResource( 10 )
-
-[node name="CSGBox" type="CSGBox" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -5, 0 )
-width = 40.0
-depth = 16.0
-material = SubResource( 18 )
-
-[node name="ShadowFixerCube" type="CSGBox" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -10 )
-width = 40.0
-material = SubResource( 19 )

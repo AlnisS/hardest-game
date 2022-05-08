@@ -41,7 +41,7 @@ func _physics_process(delta):
 	else:
 		jumping = false
 	
-	if translation.y < -4:
+	if translation.y < -4 + 0.4:
 		emit_signal("player_died")
 
 

@@ -6,7 +6,6 @@ export var level_index = 0
 var deaths = 0
 
 func _ready():
-#	pass
 	switch_to_level(level_index)
 
 func _physics_process(delta):
@@ -34,6 +33,20 @@ func switch_to_level(index):
 	# don't have any duplicates, hitches, delays, etc.
 	yield(get_tree(), "idle_frame")
 	yield(get_tree(), "idle_frame")
+	
+	var level_bounds = AABB()
+	for object in new_level.get_children():
+		if object is Spatial:
+			if object.has_method("get_aabb"):
+				level_bounds = level_bounds.merge(object.get_aabb())
+			else:
+				level_bounds = level_bounds.expand(object.get_global_transform().origin)
+	level_bounds = level_bounds.grow(8.0)
+	$ShadowCatcher.mesh.size = Vector2(level_bounds.size.x, level_bounds.size.z)
+	$ShadowCatcher.translation = (level_bounds.end + level_bounds.position) / 2.0
+	$ShadowCatcher.translation.y = -4.0
+	$ShadowFixerCube.translation.x = $ShadowCatcher.translation.x
+	$ShadowFixerCube.translation.z = -($ShadowCatcher.mesh.size.y / 2.0 + 2.0)
 	
 	get_tree().set_group("music_sync_animation", "playback_speed", 1.166667)
 	
