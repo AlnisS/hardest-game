@@ -87,7 +87,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 2, 4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 8, -2, 0 ), Vector3( 8, -1, -2 ), Vector3( 8, -2, 0 ) ]
+"values": [ Vector3( 8, -2, 0 ), Vector3( 8, 1, 0 ), Vector3( 8, -2, 0 ) ]
 }
 
 [sub_resource type="Animation" id=14]
@@ -126,7 +126,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( 13, -1, -2 ) ]
+"values": [ Vector3( 13, -1, 2 ) ]
 }
 
 [sub_resource type="Animation" id=15]
@@ -164,10 +164,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 2, 4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 13, -1, -2 ), Vector3( 13, -2, 0 ), Vector3( 13, -1, -2 ) ]
+"values": [ Vector3( 13, 0, 0 ), Vector3( 14, 0, 0 ), Vector3( 13, 0, 0 ), Vector3( 14, 0, 0 ), Vector3( 13, 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=16]
@@ -211,7 +211,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=17]
 resource_name = "oscillate"
-length = 4.0
+length = 8.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Enemy1:translation")
@@ -220,10 +220,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2, 3, 4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6, 7, 8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 3, 1.4, 0.5 ), Vector3( -3, 1.4, 0.5 ), Vector3( 3, 1.4, 0.5 ), Vector3( -3, 1.4, 0.5 ), Vector3( 3, 1.4, 0.5 ) ]
+"values": [ Vector3( 3, 1.4, 0.5 ), Vector3( -3, 1.4, 0.5 ), Vector3( 3, 1.4, 0.5 ), Vector3( -3, 1.4, 0.5 ), Vector3( 3, 1.4, 0.5 ), Vector3( -3, 1.4, 0.5 ), Vector3( 3, 1.4, 0.5 ), Vector3( -3, 1.4, 0.5 ), Vector3( 3, 1.4, 0.5 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Enemy2:transform")
@@ -232,10 +232,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1, 2, 3, 4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6, 7, 8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 ), Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 3, 1.4, -0.5 ), Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 ), Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 3, 1.4, -0.5 ), Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 ) ]
+"values": [ Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 ), Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 3, 1.4, -0.5 ), Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 ), Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 3, 1.4, -0.5 ), Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 ), Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 3, 1.4, -0.5 ), Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 ), Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 3, 1.4, -0.5 ), Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath(".:translation")
@@ -244,10 +244,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 2, 4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 2, 4, 6, 8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 18, -2, 2 ), Vector3( 18, -1, 0 ), Vector3( 18, -2, 2 ) ]
+"values": [ Vector3( 18, 1, 0 ), Vector3( 21, 0, 0 ), Vector3( 18, -1, 0 ), Vector3( 21, 0, 0 ), Vector3( 18, 1, 0 ) ]
 }
 
 [sub_resource type="BoxShape" id=10]
@@ -271,7 +271,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -1, 0 )
 width = 5.0
 
 [node name="CSGBox5" type="CSGBox" parent="Platform"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -1, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27, -1, 0 )
 width = 6.0
 
 [node name="MovingPlatform1" type="KinematicBody" parent="."]
@@ -298,7 +298,7 @@ anims/RESET = SubResource( 11 )
 anims/oscillate = SubResource( 12 )
 
 [node name="MovingPlatform2" type="KinematicBody" parent="."]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13, -1, -2 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13, -1, 2 )
 motion/sync_to_physics = true
 
 [node name="CSGBox2" type="CSGBox" parent="MovingPlatform2"]
@@ -344,7 +344,7 @@ anims/RESET = SubResource( 16 )
 anims/oscillate = SubResource( 17 )
 
 [node name="EndArea" type="Area" parent="." groups=["end_areas"]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.5, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0.5, 0 )
 collision_layer = 16
 collision_mask = 16
 __meta__ = {
