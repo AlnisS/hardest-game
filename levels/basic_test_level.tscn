@@ -83,10 +83,6 @@ use_collision = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -1, 0 )
 width = 5.0
 
-[node name="CSGBox6" type="CSGBox" parent="Platform"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 3, 0 )
-width = 5.0
-
 [node name="CSGBox5" type="CSGBox" parent="Platform"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -1, 0 )
 width = 6.0
@@ -102,13 +98,6 @@ width = 6.0
 [node name="CSGBox4" type="CSGBox" parent="Platform"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18, -1, 0 )
 width = 6.0
-
-[node name="CSGBox7" type="CSGBox" parent="Platform"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -2, 0 )
-use_collision = true
-width = 5.0
-depth = 6.0
-material = ExtResource( 2 )
 
 [node name="Oscillator1" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.4, 3 )

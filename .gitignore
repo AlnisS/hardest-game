@@ -12,3 +12,4 @@ build/
 lib/
 
 android/
+.DS_Store

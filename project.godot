@@ -24,10 +24,17 @@ config/name="Hardest Game"
 run/main_scene="res://main.tscn"
 config/icon="res://icon.png"
 
+[debug]
+
+settings/fps/force_fps=60
+
 [display]
 
 window/size/width=1280
 window/size/height=720
+window/size/borderless=true
+window/size/test_width=1920
+window/size/test_height=1080
 
 [gdnative]
 
