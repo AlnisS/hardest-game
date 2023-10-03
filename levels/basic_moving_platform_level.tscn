@@ -1,0 +1,361 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://checkers.material" type="Material" id=2]
+[ext_resource path="res://enemy.tscn" type="PackedScene" id=4]
+
+[sub_resource type="SpatialMaterial" id=6]
+flags_transparent = true
+albedo_color = Color( 0.619608, 0.94902, 0.607843, 0.537255 )
+
+[sub_resource type="BoxShape" id=13]
+extents = Vector3( 3, 1, 1 )
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Enemy1:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 3, 1.4, 0.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Enemy2:transform")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 8, -2, 0 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "oscillate"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Enemy1:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 3, 1.4, 0.5 ), Vector3( -3, 1.4, 0.5 ), Vector3( 3, 1.4, 0.5 ), Vector3( -3, 1.4, 0.5 ), Vector3( 3, 1.4, 0.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Enemy2:transform")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 ), Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 3, 1.4, -0.5 ), Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 ), Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 3, 1.4, -0.5 ), Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 8, -2, 0 ), Vector3( 8, 1, 0 ), Vector3( 8, -2, 0 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Enemy1:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 3, 1.4, 0.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Enemy2:transform")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 13, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "oscillate"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Enemy1:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 3, 1.4, 0.5 ), Vector3( -3, 1.4, 0.5 ), Vector3( 3, 1.4, 0.5 ), Vector3( -3, 1.4, 0.5 ), Vector3( 3, 1.4, 0.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Enemy2:transform")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 ), Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 3, 1.4, -0.5 ), Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 ), Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 3, 1.4, -0.5 ), Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 13, 1, 0 ), Vector3( 13, -2, 0 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Enemy1:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 3, 1.4, 0.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Enemy2:transform")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 18, -2, 0 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "oscillate"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Enemy1:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 3, 1.4, 0.5 ), Vector3( -3, 1.4, 0.5 ), Vector3( 3, 1.4, 0.5 ), Vector3( -3, 1.4, 0.5 ), Vector3( 3, 1.4, 0.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Enemy2:transform")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 ), Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 3, 1.4, -0.5 ), Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 ), Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 3, 1.4, -0.5 ), Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 18, -2, 0 ), Vector3( 18, 1, 0 ) ]
+}
+
+[sub_resource type="BoxShape" id=10]
+extents = Vector3( 1, 0.5, 1 )
+
+[node name="BasicTestLevel" type="Spatial"]
+
+[node name="StartArea" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+width = 2.001
+height = 1.001
+depth = 2.001
+material = SubResource( 6 )
+
+[node name="Platform" type="CSGCombiner" parent="."]
+material_override = ExtResource( 2 )
+use_collision = true
+
+[node name="CSGBox" type="CSGBox" parent="Platform"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -1, 0 )
+width = 5.0
+
+[node name="CSGBox5" type="CSGBox" parent="Platform"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -1, 0 )
+width = 6.0
+
+[node name="MovingPlatform1" type="KinematicBody" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, -2, 0 )
+motion/sync_to_physics = true
+
+[node name="CSGBox2" type="CSGBox" parent="MovingPlatform1"]
+width = 6.0
+material = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="MovingPlatform1"]
+shape = SubResource( 13 )
+
+[node name="Enemy1" parent="MovingPlatform1" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 1.4, 0.5 )
+
+[node name="Enemy2" parent="MovingPlatform1" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MovingPlatform1" groups=["music_sync_animation"]]
+autoplay = "oscillate"
+playback_process_mode = 0
+anims/RESET = SubResource( 11 )
+anims/oscillate = SubResource( 12 )
+
+[node name="MovingPlatform2" type="KinematicBody" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13, 1, 0 )
+motion/sync_to_physics = true
+
+[node name="CSGBox2" type="CSGBox" parent="MovingPlatform2"]
+width = 6.0
+material = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="MovingPlatform2"]
+shape = SubResource( 13 )
+
+[node name="Enemy1" parent="MovingPlatform2" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 1.4, 0.5 )
+
+[node name="Enemy2" parent="MovingPlatform2" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MovingPlatform2" groups=["music_sync_animation"]]
+autoplay = "oscillate"
+playback_process_mode = 0
+anims/RESET = SubResource( 16 )
+anims/oscillate = SubResource( 17 )
+
+[node name="MovingPlatform3" type="KinematicBody" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18, -2, 0 )
+motion/sync_to_physics = true
+
+[node name="CSGBox2" type="CSGBox" parent="MovingPlatform3"]
+width = 6.0
+material = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="MovingPlatform3"]
+shape = SubResource( 13 )
+
+[node name="Enemy1" parent="MovingPlatform3" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 1.4, 0.5 )
+
+[node name="Enemy2" parent="MovingPlatform3" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1.4, -0.5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MovingPlatform3" groups=["music_sync_animation"]]
+autoplay = "oscillate"
+playback_process_mode = 0
+anims/RESET = SubResource( 14 )
+anims/oscillate = SubResource( 15 )
+
+[node name="EndArea" type="Area" parent="." groups=["end_areas"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.5, 0 )
+collision_layer = 16
+collision_mask = 16
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Visual" type="CSGBox" parent="EndArea"]
+width = 2.001
+height = 1.001
+depth = 2.001
+material = SubResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="EndArea"]
+shape = SubResource( 10 )
