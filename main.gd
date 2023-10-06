@@ -55,6 +55,7 @@ func switch_to_level(index):
 
 	for animation_player in get_tree().get_nodes_in_group("music_sync_animation"):
 		animation_player.seek(fmod(get_music_playhead(), animation_player.current_animation_length))
+	print('synced')
 
 # music playhead position as a fraction of a beat
 func get_music_playhead():
