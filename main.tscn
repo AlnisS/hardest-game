@@ -47,8 +47,9 @@ levels = [ ExtResource( 4 ), ExtResource( 10 ), ExtResource( 1 ), ExtResource( 1
 [node name="Level" type="Spatial" parent="."]
 
 [node name="Camera" type="InterpolatedCamera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.84051, 0.541796, 0, -0.541796, 0.84051, 0, 5.44374, 6.47226 )
+transform = Transform( 1, 0, 0, 0, 0.851049, 0.525086, 0, -0.525086, 0.851049, 0, 5.44374, 7.426 )
 fov = 50.0
+size = 10.0
 target = NodePath("../Player/CameraBase/CameraTarget")
 speed = 3.0
 enabled = true
@@ -106,7 +107,7 @@ transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
 
 [node name="CameraTarget" type="Spatial" parent="Player/CameraBase"]
-transform = Transform( 1, 0, 0, 0, 0.84051, 0.541796, 0, -0.541796, 0.84051, 0, 5.44374, 6.47226 )
+transform = Transform( 1, 0, 0, 0, 0.81642, 0.577459, 0, -0.577459, 0.81642, 0, 5.44374, 7.426 )
 
 [node name="CoyoteTime" type="Timer" parent="Player"]
 wait_time = 0.05

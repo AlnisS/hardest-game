@@ -8,9 +8,15 @@ var deaths = 0
 func _ready():
 	switch_to_level(level_index)
 
+var x_runahead = 2.0
+
 func _physics_process(delta):
 	$Player/CameraBase.rotation_degrees.y = -$Player.velocity.x * 2
 	$Player/CameraBase.rotation_degrees.x = -$Player.velocity.z * 2
+	
+#	x_runahead += $Player.velocity.x * delta * 0.5
+#	x_runahead = clamp(x_runahead, -2.0, 2.0)
+	$Player/CameraBase.translation.x = x_runahead
 	
 	if Input.is_action_just_pressed("skip"):
 		_on_level_finished()
