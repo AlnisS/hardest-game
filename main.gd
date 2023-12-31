@@ -91,3 +91,19 @@ func _on_level_finished():
 	else:
 		switch_to_level(level_index)
 	
+
+
+func _on_TopBarBackground_gui_input(event):
+	if event is InputEventMouseMotion and Input.is_mouse_button_pressed(BUTTON_LEFT):
+		call_deferred("_move_window", event.relative)
+
+func _move_window(delta: Vector2):
+	OS.window_position += delta
+
+
+func _on_ButtonL1_pressed():
+	switch_to_level(1)
+
+
+func _on_ButtonL2_pressed():
+	pass # Replace with function body.

@@ -139,7 +139,7 @@ margin_bottom = 7.0
 text = "You won!"
 align = 1
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TopBarBackground" type="ColorRect" parent="."]
 anchor_right = 1.0
 margin_bottom = 40.0
 color = Color( 0, 0, 0, 1 )
@@ -192,5 +192,43 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
 width = 4.0
 material = SubResource( 19 )
 
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 104.0
+margin_top = 143.0
+margin_right = 162.0
+margin_bottom = 183.0
+
+[node name="ButtonL1" type="Button" parent="VBoxContainer"]
+margin_right = 58.0
+margin_bottom = 20.0
+text = "Level 1"
+
+[node name="ButtonL2" type="Button" parent="VBoxContainer"]
+margin_top = 24.0
+margin_right = 58.0
+margin_bottom = 44.0
+text = "Level 2"
+
+[node name="ButtonL3" type="Button" parent="VBoxContainer"]
+margin_top = 48.0
+margin_right = 58.0
+margin_bottom = 68.0
+text = "Level 3"
+
+[node name="ButtonL4" type="Button" parent="VBoxContainer"]
+margin_top = 72.0
+margin_right = 58.0
+margin_bottom = 92.0
+text = "Level 4"
+
+[node name="ButtonL5" type="Button" parent="VBoxContainer"]
+margin_top = 96.0
+margin_right = 58.0
+margin_bottom = 116.0
+text = "Level 5"
+
 [connection signal="player_died" from="Player" to="." method="_on_Player_player_died"]
 [connection signal="body_entered" from="Player/EnemyDetector" to="Player" method="_on_EnemyDetector_body_entered"]
+[connection signal="gui_input" from="TopBarBackground" to="." method="_on_TopBarBackground_gui_input"]
+[connection signal="pressed" from="VBoxContainer/ButtonL1" to="." method="_on_ButtonL1_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonL2" to="." method="_on_ButtonL2_pressed"]
