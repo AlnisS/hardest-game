@@ -19,7 +19,11 @@ func _physics_process(delta):
 	$Player/CameraBase.translation.x = x_runahead
 	
 	if Input.is_action_just_pressed("skip"):
-		_on_level_finished()
+		pass
+#		_on_level_finished()
+	
+	if Input.is_action_just_pressed("restart_game"):
+		get_tree().change_scene("res://main.tscn")
 	
 	$InfoLabel.text = str($Player/CoyoteTime.time_left)
 
