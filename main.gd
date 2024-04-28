@@ -25,6 +25,9 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("restart_game"):
 		get_tree().change_scene("res://main.tscn")
 	
+	if Input.is_action_just_pressed("toggle_fullscreen"):
+		OS.window_fullscreen = !OS.window_fullscreen
+	
 	$InfoLabel.text = str($Player/CoyoteTime.time_left)
 
 func reset_player():
