@@ -10,6 +10,13 @@ func _ready():
 
 var x_runahead = 2.0
 
+func _process(delta):
+	var target = $"%CameraTarget".global_transform
+	var current = $Camera.global_transform
+	var decay = 0.1
+	var interpolated = current.interpolate_with(target, decay)
+	$Camera.global_transform = interpolated
+
 func _physics_process(delta):
 	$Player/CameraBase.rotation_degrees.y = -$Player.velocity.x * 2
 	$Player/CameraBase.rotation_degrees.x = -$Player.velocity.z * 2
