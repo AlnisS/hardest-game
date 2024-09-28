@@ -62,11 +62,9 @@ func switch_to_level(index):
 			else:
 				level_bounds = level_bounds.expand(object.get_global_transform().origin)
 	level_bounds = level_bounds.grow(8.0)
-	$ShadowCatcher.mesh.size = Vector2(level_bounds.size.x, level_bounds.size.z)
+	$ShadowCatcher.mesh.size = Vector3(level_bounds.size.x, 2.0, level_bounds.size.z)
 	$ShadowCatcher.translation = (level_bounds.end + level_bounds.position) / 2.0
-	$ShadowCatcher.translation.y = -4.0
-	$ShadowFixerCube.translation.x = $ShadowCatcher.translation.x
-	$ShadowFixerCube.translation.z = -($ShadowCatcher.mesh.size.y / 2.0 + 2.0)
+	$ShadowCatcher.translation.y = -4.0 - 1.0
 	
 	get_tree().set_group("music_sync_animation", "playback_speed", 1.166667)
 	

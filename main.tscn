@@ -41,16 +41,15 @@ border_color = Color( 0.192157, 1, 0.317647, 1 )
 size = 30
 font_data = ExtResource( 7 )
 
+[sub_resource type="SpatialMaterial" id=19]
+flags_unshaded = true
+albedo_color = Color( 0.666667, 0.647059, 1, 1 )
+
 [sub_resource type="SpatialMaterial" id=18]
 flags_use_shadow_to_opacity = true
 albedo_color = Color( 0.666667, 0.647059, 1, 1 )
 
-[sub_resource type="PlaneMesh" id=7]
-material = SubResource( 18 )
-
-[sub_resource type="SpatialMaterial" id=19]
-flags_unshaded = true
-albedo_color = Color( 0.666667, 0.647059, 1, 1 )
+[sub_resource type="CubeMesh" id=22]
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 2 )
@@ -198,13 +197,10 @@ directional_shadow_mode = 0
 directional_shadow_depth_range = 1
 
 [node name="ShadowCatcher" type="CSGMesh" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0 )
-mesh = SubResource( 7 )
-
-[node name="ShadowFixerCube" type="CSGBox" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
-width = 4.0
-material = SubResource( 19 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0 )
+material_override = SubResource( 19 )
+material_overlay = SubResource( 18 )
+mesh = SubResource( 22 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 visible = false
